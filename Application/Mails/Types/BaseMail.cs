@@ -15,12 +15,13 @@ namespace Application.Mails.Types
         public IFluentEmail Prepare(string mailData, IServiceProvider serviceProvider)
         {
             using var scope = serviceProvider.CreateScope();
-
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var file = Path.Combine(currentDirectory, "Mails", "Template",$"{Template}.cshtml");
+            
             return scope.ServiceProvider.GetRequiredService<IFluentEmail>()
                 .To(To)
                 .Subject(Subject)
-                .UsingTemplateFromFile($"{Directory.GetCurrentDirectory()}/../Core/Mails/Template/{Template}.cshtml",
-                    PrepareParams(mailData));
+                .UsingTemplateFromFile(file, PrepareParams(mailData));
         }
 
         protected abstract IEmailTemplateParams PrepareParams(string param);

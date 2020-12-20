@@ -10,7 +10,7 @@ namespace Application.Tasks
     public class TaskIntervalRunner<T> : IHostedService, IDisposable
         where T : IRequest, new()
     {
-        private const int IntervalSeconds = 10;
+        private const int IntervalSeconds = 60;
         private readonly ILogger<TaskIntervalRunner<T>> _logger;
         private readonly IMediator _mediator;
         private Timer _timer;

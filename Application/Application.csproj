@@ -15,4 +15,11 @@
       <ProjectReference Include="..\Core\Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Mails\Template\WelcomeMailTemplate.cshtml" />
+      <Content Include="Mails\Template\WelcomeMailTemplate.cshtml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

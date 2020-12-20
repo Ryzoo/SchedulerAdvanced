@@ -46,6 +46,11 @@ namespace SchedulerAdvanced
                 .UseSerilog()
                 .ConfigureServices((hostContext, services) =>
                 {
+                    var csvFilePathSettings = new CsvFilePathSettings()
+                    {
+                        WelcomeMailFilePath = hostContext.Configuration["CsvFilePathSettings:WelcomeMailFilePath"],
+                    };
+                                        
                     var emailSettings = new EmailSettings()
                     {
                         From = hostContext.Configuration["EmailSettings:From"],
@@ -56,8 +61,18 @@ namespace SchedulerAdvanced
                     };
                     
                     services
-                        .Configure<CsvFilePathSettings>(props => hostContext.Configuration.GetSection("CsvFilePathSettings").Bind(props))
-                        .Configure<EmailSettings>(props => hostContext.Configuration.GetSection("DbSettings").Bind(props))
+                        .Configure<CsvFilePathSettings>(o =>
+                        {
+                            o.WelcomeMailFilePath = csvFilePathSettings.WelcomeMailFilePath;
+                        })
+                        .Configure<EmailSettings>(o =>
+                        {
+                            o.From = emailSettings.From;
+                            o.Host = emailSettings.Host;
+                            o.Port = emailSettings.Port;
+                            o.Username = emailSettings.Username;
+                            o.Password = emailSettings.Password;
+                        })
                         .AddMemoryCache()
                         .AddTransient<ICsvParserService, CsvParserService>()
                         .AddTransient<IMailBuilderService, MailBuilderService>()

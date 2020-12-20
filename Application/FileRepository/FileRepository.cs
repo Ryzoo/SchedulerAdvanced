@@ -12,8 +12,14 @@ namespace Application.FileRepository
     
     public class FileRepository : IFileRepository
     {
-        private static readonly string _filePath = "file_repo.json";
+        private readonly string _filePath;
 
+        public FileRepository()
+        {
+            string currentDirectory = Directory.GetCurrentDirectory();
+            _filePath = Path.Combine(currentDirectory, "file_repo.json");
+        }
+        
         public async Task WriteToJsonFile(FileRepositoryContent objectToWrite)
         {
             TextWriter writer = null;

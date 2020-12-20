@@ -44,7 +44,7 @@ namespace Application.Handlers
                         mailRetry--;
                     }
                     
-                } while (!mailSent || mailRetry > 0);
+                } while (!mailSent && mailRetry > 0);
             }
         }
     }

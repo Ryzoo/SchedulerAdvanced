@@ -6,6 +6,7 @@
     <e p="C:\Users\gkast\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\gkast\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
     <e p="C:\Users\gkast\RiderProjects\SchedulerAdvanced" t="IncludeFlat">
+      <e p=".git\info\exclude" t="IncludeRecursive" />
       <e p="Application" t="IncludeRecursive">
         <e p="Application.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
@@ -97,6 +98,7 @@
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="file_repo.json" t="Include" />
         <e p="logs" t="Include">
           <e p="scheduleAppLog20201025.txt" t="Include" />
         </e>
@@ -109,6 +111,7 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="SchedulerAdvanced.csproj" t="IncludeRecursive" />
+        <e p="welcome_mail.csv" t="Include" />
       </e>
       <e p="SchedulerAdvanced.sln" t="IncludeFlat" />
     </e>
